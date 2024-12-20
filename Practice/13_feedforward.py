@@ -6,7 +6,6 @@ import torchvision.transforms as transforms
 import matplotlib.pyplot as plt
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
 # hyper parameters 
 input_size = 784 # 28*28
 hidden_size = 100
