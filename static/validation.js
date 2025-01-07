@@ -9,8 +9,8 @@ document.getElementById('uploadForm').addEventListener('submit', function(event)
         return;
     }
 
-    if (file.type != "image/png"){
-        errorDiv.textContent = "The file must be a PNG image.";
+    if (file.type != "image/jpeg"){
+        errorDiv.textContent = "The file must be a JPEG image.";
         event.preventDefault();
         return;
     }

@@ -57,7 +57,7 @@ clearButton.addEventListener('click', () => {
 // Submit the image and mask
 submitButton.addEventListener('click', () => {
     const maskData = canvas.toDataURL(); // Convert the canvas (mask) to an image
-
+    console.log(maskData)
     // Send the mask and filename to the backend
     fetch('/process', {
         method: 'POST',
