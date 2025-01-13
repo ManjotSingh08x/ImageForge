@@ -50,6 +50,8 @@ Week 4: 5 – 11 Jan
 
     Work on integration of semantic segmentation model with the existing website so users can directly select unwanted objects and remove them completely 
 
+    # todo: prupose of project, networks and dataset used. 
+
     Final touchups 
 
 12 Jan – Final Evaluation 
