@@ -56,12 +56,12 @@ def process():
     #for now this will only convert the image to grayscale and return the result, 
     # but after testing the ai model we will process it and return the inpainted result
     model = PartialConvUNet()
-    model= torch.load('256resoModel_dict', map_location=torch.device('cpu'))
+    model= torch.load('models/256resoModel_dict', map_location=torch.device('cpu'))
 
     file_path = os.path.join(UPLOAD_FOLDER, filename)
     img = Image.open(file_path)
     img, mask = getinput(img, mask_data)
-    img = model(img, mask)
+    img = model(img.to(dtype=float), mask)
     output_path = os.path.join(OUTPUT_FOLDER, "@" + filename)
     img.save(output_path)
 

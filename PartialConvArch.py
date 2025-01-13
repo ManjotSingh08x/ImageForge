@@ -144,7 +144,7 @@ def create_mask(mask_data):
     return image_tensor[:3, :, :]
 
 def getinput(image, mask_data):
-    mask = create_mask(mask_data)
+    mask = create_mask(mask_data).to(dtype=torch.uint8)
     to_tensor = transforms.ToTensor()
     image = to_tensor(image)
     masked_image = torch.bitwise_and(image, mask)
