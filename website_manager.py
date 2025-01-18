@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, send_file, redirect, url_for
 from PIL import Image
-from PartialConvArch import *
+from PartialConvArch256 import *
 import pickle
 import torch
 import os

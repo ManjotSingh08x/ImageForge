@@ -73,6 +73,16 @@ class DecodingLayer(nn.Module):
         return output_image, output_mask
 
 class PartialConvUNet(nn.Module):
+    """
+    Inputs: Image tensor in form C*H*W and Mask tensor in form 1*H*W tensor in 
+            Default parameters are 3*256*256
+
+    Assertion: 2^(layers + 1) == input size 
+    
+    Output: Image tensor in form C*H*W
+
+    Mask: value 1 for removing, 255 for preserving parts of the image
+    """
     def __init__(self, input_size = 256, layers = 7):
         if 2**(layers + 1) != input_size:
             raise AssertionError
@@ -116,36 +126,3 @@ class PartialConvUNet(nn.Module):
             decoder_key = f"decoder_{i}"
             out_data, out_mask = getattr(self, decoder_key)(out_data, out_mask, encoder_dict[encoder_key], mask_dict[encoder_key])
         return out_data
-
-def create_mask(mask_data):
-    print(mask_data)
-    header, encoded = mask_data.split(",", 1)
-
-    # Decode the Base64 string
-    image_data = base64.b64decode(encoded)
-
-    # Convert the binary data to a PIL image
-    image = Image.open(BytesIO(image_data))
-
-    # Define a transformation to convert the PIL image to a PyTorch tensor
-    transform = transforms.ToTensor()
-    image_tensor = transform(image)
-    # image_tensor = image_tensor.permute(1, 2, 0)  # Change to (H, W, C)
-    # Normalize to [0, 1] range if not already
-    image_tensor = image_tensor.clamp(0, 1)
-    # Display using matplotlib
-    display = image_tensor.permute(1,2,0)
-    plt.imshow(display.numpy())  # Convert tensor to NumPy array for Matplotlib
-    plt.axis('off')  # Turn off axis
-    plt.show()
-    # Convert the image to a PyTorch tensor
-
-    print(image_tensor.shape)
-    return image_tensor[:3, :, :]
-
-def getinput(image, mask_data):
-    mask = create_mask(mask_data).to(dtype=torch.uint8)
-    to_tensor = transforms.ToTensor()
-    image = to_tensor(image)
-    masked_image = torch.bitwise_and(image, mask)
-    return masked_image, mask
