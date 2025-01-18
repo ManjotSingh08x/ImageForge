@@ -57,3 +57,6 @@ Week 4: 5 – 11 Jan
 12 Jan – Final Evaluation 
 
     Work on documentation and cleanup 
+
+# Usage
+    Download Model and Network architecture from the drive link: https://drive.google.com/drive/u/1/folders/1c-5tqHWRlHVjFq-suPen_SKiV5DF1vxR
