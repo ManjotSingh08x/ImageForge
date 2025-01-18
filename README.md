@@ -59,4 +59,13 @@ Week 4: 5 – 11 Jan
     Work on documentation and cleanup 
 
 # Usage
-    Download Model and Network architecture from the drive link: https://drive.google.com/drive/u/1/folders/1c-5tqHWRlHVjFq-suPen_SKiV5DF1vxR
+
+Download Model and Network architecture from the drive link: [Model and Architecture](https://drive.google.com/drive/u/1/folders/1c-5tqHWRlHVjFq-suPen_SKiV5DF1vxR)
+
+## For main model:
+
+    import torch
+    from PartialConvArch256 import *
+    model = PartialConvUNet()
+    model= torch.load('models/256resoModel_dict', map_location=torch.device('cpu')) 
+    
