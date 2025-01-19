@@ -12,11 +12,12 @@ Kaggle Notebook: [Notebook](https://www.kaggle.com/code/manjotsingh08x/imageforg
 Download Model and Network architecture from the drive link: [Model and Architecture](https://drive.google.com/drive/u/1/folders/1c-5tqHWRlHVjFq-suPen_SKiV5DF1vxR)
 
 ## For main model:
-    import torch
-    from PartialConvArch256 import *
-    model = PartialConvUNet()
-    model= torch.load('models/256resoModel_dict', map_location=torch.device('cpu')) 
-
+```python
+import torch
+from PartialConvArch256 import *
+model = PartialConvUNet()
+model = torch.load('ImageInpainting600k.pt', map_location=torch.device('cpu')) 
+```
 # Timeline 
 
 Week 1: 15 – 21 December 
